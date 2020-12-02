@@ -23,16 +23,16 @@ spo_network = spo_raw %>%
 
 # Make EMLO network. First load full data to extract catalogue info:
 
-work <- read_csv("~/Downloads/EMLO/work.csv", col_types = cols(.default = "c"))
+work <- read_csv("work.csv", col_types = cols(.default = "c"))
 colnames(work) = to_snake_case(colnames(work))
 
 # Load edge list
 
-emlo_raw = read_delim('/Users/Yann/Documents/non-Github/ego_networks/emlo_full_network.dat', delim = '\t', col_names = F)
+emlo_raw = read_delim('emlo_full_network.dat', delim = '\t', col_names = F)
 
 # Load a list of letters to remove (duplicates and some unknowns)
 
-to_remove = read_csv('/Users/Yann/Documents/GitHub/de-duplications/to_remove_list_with_unknown.csv')
+to_remove = read_csv('to_remove_list_with_unknown.csv')
 
 # Make network from edge list with catalogue and year information
 
@@ -48,7 +48,7 @@ emlo_network = emlo_raw %>%
 
 # Load shelfmark info to join to BCC data:
 
-shelfmarks = read_delim('/Users/Yann/Documents/non-Github/na_chapter_1/shelfmarks.txt', delim = '\t')
+shelfmarks = read_delim('shelfmarks.txt', delim = '\t')
 
 colnames(shelfmarks) = to_snake_case(colnames(shelfmarks))
 folio_section = shelfmarks %>% filter(str_detect(shelfmark_and_pagination, "fol"))
